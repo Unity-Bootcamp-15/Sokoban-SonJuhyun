@@ -4,7 +4,22 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+
+
+            Console.ResetColor();
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Title = "Sonkoban";
+            Console.CursorVisible = false;
+            Console.Clear();
+
+            while (true)
+            {
+            
+            }
+
+
+
         }
     }
 }
