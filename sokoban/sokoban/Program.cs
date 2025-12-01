@@ -31,6 +31,9 @@ namespace sokoban
             // 상자 위치
             int boxX = 7;
             int boxY = 3;
+            // 골 위치
+            int goalX = 12;
+            int goalY = 12;
 
             // 이 스코프 안을 프레임이라고 말함
             // 알아야 하는 용어 "프레임워크" = 응용프로그램의 동작순서
@@ -39,9 +42,21 @@ namespace sokoban
             // ---------------게임 루프-----------------
             while (true)
             {
+
+
                 //------------------ Render -------------------------
                 Console.Clear();
+                
+                if (boxX == goalX && boxY == goalY)
+                {
+                    Console.SetCursorPosition(boxX, boxY);
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.Write("@");
 
+                    Console.SetCursorPosition(6, 6);
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.Write("Clear!");
+                }
 
                 // 플레이어
                 Console.SetCursorPosition(playerX, playerY);
@@ -51,11 +66,16 @@ namespace sokoban
                 // 벽
                 Console.SetCursorPosition(wallX, wallY);
                 Console.ForegroundColor = ConsoleColor.DarkRed; 
-                Console.Write("@");
+                Console.Write("#");
 
-                // 상자 그리기
+                // 상자 
                 Console.SetCursorPosition(boxX, boxY);
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.Write("@");
+
+                // 골
+                Console.SetCursorPosition(goalX, goalY);
+                Console.ForegroundColor = ConsoleColor.DarkGray;
                 Console.Write("O");
 
                 //------------------ ProcessInput -------------------
@@ -96,7 +116,7 @@ namespace sokoban
                 }
                 else
                 {
-                    return;
+                    continue;
                 }
 
                 // 이동 방향 계산
@@ -153,9 +173,12 @@ namespace sokoban
                     if (isPushingBox)
                     {
                         boxX = nextBoxX;
-                        boxY = nextBoxY;
+                        boxY = nextBoxY;     
                     }
                 }
+
+               
+                
 
             }
         }
